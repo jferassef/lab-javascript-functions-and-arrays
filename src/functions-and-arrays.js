@@ -211,20 +211,44 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct(constMatrix) {
-  let finalProduct = 0;
-  let horizontalProduct = 0;
-  let verticalProduct = 0;
-
-  for (i = 0; i < matrix.length; i++) {
-    for (j = 0; j < matrix[i].length; j++) {}
-    horizontalProduct = matrix[(i, j)*matrix[(i, j+1)*matrix[(i, j+2)*matrix[(i, j+3)matrix[(i, j+4)
-    
+function greatestProduct(paraMatrix) {
+  let varProduct, varNewProduct;
+  varProduct = 0;
+  varNewProduct1 = 0;
+  varNewProduct2 = 0;
+  for (i = 0; i < paraMatrix.length - 3; i++) {
+    for (j = 0; j < paraMatrix[i].length - 3; j++) {
+      varNewProduct1 = paraMatrix[i][j] * paraMatrix[i][j + 1] * paraMatrix[i][j + 2] * paraMatrix[i][j + 3];
+      if (varNewProduct1 >= varProduct) {
+        varProduct = varNewProduct1;
+      }
+      varNewProduct2 = paraMatrix[i][j] * paraMatrix[i + 1][j] * paraMatrix[i + 2][j] * paraMatrix[i + 3][j];
+      if (varNewProduct2 >= varProduct) {
+        varProduct = varNewProduct2;
+      }
+    }
   }
+  return varProduct;
 }
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
+if (typeof module !== 'undefined') {
+  module.exports = {
+    maxOfTwoNumbers,
+    findLongestWord,
+    sumNumbers,
+    sum,
+    averageNumbers,
+    averageWordLength,
+    avg,
+    uniquifyArray,
+    doesWordExist,
+    howManyTimes,
+    greatestProduct
+  };
+}
+
 if (typeof module !== 'undefined') {
   module.exports = {
     maxOfTwoNumbers,
